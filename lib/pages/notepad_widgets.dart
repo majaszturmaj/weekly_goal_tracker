@@ -3,6 +3,10 @@ import 'package:intl/intl.dart';
 import 'date_manager.dart';
 import 'variable_resource.dart';
 
+
+bool hasDateChanged = false;
+
+
 class NotepadPage extends StatefulWidget {
   @override
   _NotepadPageState createState() => _NotepadPageState();

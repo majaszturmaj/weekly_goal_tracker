@@ -1,10 +1,12 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'history_widgets.dart';
 
 class VarContainer {
   static String _notepadTypedText = '';
   static String _milestonesText = '';
   static List<String> _historyNotes = [];
   static int _currentWeekNumber = 0;
+  static HistoryPageState historyPageState = HistoryPageState();
 
   static const String _notepadTypedTextKey = 'notepadTypedText';
   static const String _milestonesTextKey = 'milestonesText';
@@ -34,6 +36,19 @@ class VarContainer {
     } catch (e) {
       // Handle the exception, e.g., logging or displaying an error message.
       print('Error saving values to shared preferences: $e');
+    }
+  }
+
+  static void addHistoryNote() {
+    _historyNotes.add(_notepadTypedText);
+    historyPageState.addHistoryBox(_notepadTypedText);
+    saveValues();
+  }
+
+  static void deleteHistoryNote(int index) {
+    if (index >= 0 && index < _historyNotes.length) {
+      _historyNotes.removeAt(index);
+      saveValues();
     }
   }
 

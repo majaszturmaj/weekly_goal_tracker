@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'variable_resource.dart';
 
 class DateManager {
   static int weekNumber = 0;
@@ -9,10 +10,21 @@ class DateManager {
     return weekOfYear;
   }
 
+  static bool setWeekNumber(int week) {
+    if (weekNumber != week) {
+      weekNumber = week;
+      VarContainer.addHistoryNote();
+      return true;
+    }
+    return false;
+  }
+
   static String getFormattedDate() {
     final formatter = DateFormat('dd MMMM');
     final now = DateTime.now();
-    weekNumber = getWeekOfYear(now);
+    setWeekNumber(getWeekOfYear(now));
     return '${formatter.format(now)} - week $weekNumber of ${now.year}';
   }
+
+
 }
