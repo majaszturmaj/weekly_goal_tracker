@@ -1,3 +1,14 @@
+# Platform-specific
+android/
+windows/
+web/
+macos/
+linux/
+ios/
+
+# Test thus I don't use tests now
+test/
+
 # Miscellaneous
 *.class
 *.log
