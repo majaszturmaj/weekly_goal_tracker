@@ -21,6 +21,10 @@ class DateManager {
     if (weekNumber != week) {
       weekNumber = week;
       VarContainer.addHistoryNote();
+
+      // Clear the notepadTypedText
+      VarContainer.notepadTypedText = '';
+
       return true;
     }
     return false;

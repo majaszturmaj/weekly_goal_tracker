@@ -39,11 +39,12 @@ class VarContainer {
   }
 
   static void addHistoryNote() {
-    _historyNotes.add(_notepadTypedText);
-    HistoryPageState().addHistoryBox(_notepadTypedText);
-    saveValues();
+    if (_notepadTypedText.isNotEmpty) {
+      _historyNotes.insert(0, _notepadTypedText);
+      HistoryPageState().addHistoryBoxes();
+      saveValues();
+    }
   }
-
   static void deleteHistoryNote(int index) {
     if (index >= 1 && index < _historyNotes.length) {
       _historyNotes.removeAt(index);

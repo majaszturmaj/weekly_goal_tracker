@@ -23,6 +23,8 @@ class _NotepadPageState extends State<NotepadPage> {
     if (note.isNotEmpty) {
       // Save note logic here
       _textEditingController.clear();
+      VarContainer.notepadTypedText = ''; // Wyczyść notatkę w VarContainer
+      VarContainer.addHistoryNote(); // Dodaj notatkę do historii w VarContainer
     }
   }
 
@@ -38,7 +40,7 @@ class _NotepadPageState extends State<NotepadPage> {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 20.0, bottom: 100.0),
+                  padding: const EdgeInsets.only(top: 32.0, bottom: 100.0),
                   child: TextInputBox(
                     textEditingController: _textEditingController,
                     onSaveAndClear: saveAndClearNote,
@@ -51,7 +53,6 @@ class _NotepadPageState extends State<NotepadPage> {
       ),
     );
   }
-
 }
 
 class TextInputBox extends StatefulWidget {
@@ -71,6 +72,7 @@ class _TextInputBoxState extends State<TextInputBox> {
   @override
   void initState() {
     super.initState();
+    VarContainer.loadValues();
     widget.textEditingController.text = VarContainer.notepadTypedText;
   }
 

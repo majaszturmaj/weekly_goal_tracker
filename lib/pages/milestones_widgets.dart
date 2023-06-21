@@ -43,6 +43,7 @@ class _MilestonesTextFieldContainerState
 
   @override
   void initState() {
+    VarContainer.loadValues();
     super.initState();
     _textEditingController = TextEditingController(text: VarContainer.milestonesText);
   }

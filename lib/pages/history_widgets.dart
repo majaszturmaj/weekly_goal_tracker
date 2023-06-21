@@ -4,6 +4,8 @@ import 'variable_resource.dart';
 import 'package:provider/provider.dart';
 import 'notepad_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
 
@@ -33,35 +35,60 @@ class HistoryPageState extends State<HistoryPage> {
   @override
   void initState() {
     super.initState();
-    addHistoryBox("Initial history"); // Call addHistoryBox here to add initial box
+    VarContainer.loadValues(); // Wczytaj wartości z SharedPreferences
+    addHistoryBoxes();
   }
 
-  void addHistoryBox(String historyText) {
+  void addHistoryBoxes() {
     setState(() {
-      boxes.insert(
-        0,
+      // Clear existing boxes
+      boxes.clear();
+
+      // Add the current week's note box
+      boxes.add(
         Container(
           margin: const EdgeInsets.only(bottom: 16),
           width: 275,
           height: 132,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
-            color: Colors.blue, // Customize the color of the added box
+            color: const Color.fromRGBO(249, 192, 111, 1),
           ),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                historyText,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
+          child: TextInputBox(
+            onSaveAndClear: () {
+              // Add your onSaveAndClear logic here
+            },
+            textEditingController: TextEditingController(),
+          ),
+        ),
+      );
+
+      // Add previous week notes
+      for (final historyNote in VarContainer.historyNotes.reversed) {
+        boxes.add(
+          Container(
+            margin: const EdgeInsets.only(bottom: 16),
+            width: 275,
+            height: 132,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(28),
+              color: Colors.blue, // Customize the color of the history note box
+            ),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  historyNote,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      );
+        );
+      }
     });
   }
 
