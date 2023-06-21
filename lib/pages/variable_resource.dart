@@ -6,7 +6,6 @@ class VarContainer {
   static String _milestonesText = '';
   static List<String> _historyNotes = [];
   static int _currentWeekNumber = 0;
-  static HistoryPageState historyPageState = HistoryPageState();
 
   static const String _notepadTypedTextKey = 'notepadTypedText';
   static const String _milestonesTextKey = 'milestonesText';
@@ -41,12 +40,12 @@ class VarContainer {
 
   static void addHistoryNote() {
     _historyNotes.add(_notepadTypedText);
-    historyPageState.addHistoryBox(_notepadTypedText);
+    HistoryPageState().addHistoryBox(_notepadTypedText);
     saveValues();
   }
 
   static void deleteHistoryNote(int index) {
-    if (index >= 0 && index < _historyNotes.length) {
+    if (index >= 1 && index < _historyNotes.length) {
       _historyNotes.removeAt(index);
       saveValues();
     }

@@ -15,7 +15,7 @@ class NavigatorContainer extends StatelessWidget {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(141, 163, 173, 1),
+        color: const Color.fromRGBO(141, 163, 173, 1),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),

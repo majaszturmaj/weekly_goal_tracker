@@ -30,12 +30,13 @@ class MyApp extends StatelessWidget {
 
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _textEditingController = TextEditingController();
   var selectedIndex = 0;
 
   @override
@@ -55,23 +56,20 @@ class _MyHomePageState extends State<MyHomePage> {
         throw UnimplementedError('No widget for $selectedIndex');
     }
     return Scaffold(
-      body: Container(
-        color: Theme.of(context).colorScheme.primary,
-        child: Column(
-          children: [
-            Expanded(
-              child: page,
-            ),
-            NavigatorContainer(
-              selectedIndex: selectedIndex,
-              onIndexChanged: (index) {
-                setState(() {
-                  selectedIndex = index;
-                });
-              },
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: page,
+          ),
+          NavigatorContainer(
+            selectedIndex: selectedIndex,
+            onIndexChanged: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+          ),
+        ],
       ),
     );
   }

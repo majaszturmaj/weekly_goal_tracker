@@ -4,8 +4,9 @@ import 'variable_resource.dart';
 import 'package:provider/provider.dart';
 import 'notepad_widgets.dart';
 import 'package:flutter/material.dart';
-
 class HistoryPage extends StatefulWidget {
+  const HistoryPage({super.key});
+
   @override
   HistoryPageState createState() => HistoryPageState();
 }
@@ -13,12 +14,12 @@ class HistoryPage extends StatefulWidget {
 class HistoryPageState extends State<HistoryPage> {
   List<Widget> boxes = [
     Container(
-      margin: EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
       width: 275,
       height: 132,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(28),
-        color: Color.fromRGBO(249, 192, 111, 1),
+        color: const Color.fromRGBO(249, 192, 111, 1),
       ),
       child: TextInputBox(
         onSaveAndClear: () {
@@ -29,12 +30,18 @@ class HistoryPageState extends State<HistoryPage> {
     ),
   ];
 
+  @override
+  void initState() {
+    super.initState();
+    addHistoryBox("Initial history"); // Call addHistoryBox here to add initial box
+  }
+
   void addHistoryBox(String historyText) {
     setState(() {
       boxes.insert(
         0,
         Container(
-          margin: EdgeInsets.only(bottom: 16),
+          margin: const EdgeInsets.only(bottom: 16),
           width: 275,
           height: 132,
           decoration: BoxDecoration(
@@ -46,7 +53,7 @@ class HistoryPageState extends State<HistoryPage> {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 historyText,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.white,
                 ),

@@ -10,20 +10,22 @@ class MilestonesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
+      child: SingleChildScrollView(
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 36.0), // Add padding on left and right sides
+            padding: const EdgeInsets.symmetric(horizontal: 36.0), // Add padding on left and right sides
             child: MilestonesNotepadTextContainer(),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 36.0), // Add padding on left and right sides
+            padding: const EdgeInsets.symmetric(horizontal: 36.0), // Add padding on left and right sides
             child: MilestonesTextFieldContainer(),
           ),
         ],
+      ),
       ),
     );
   }
@@ -42,8 +44,7 @@ class _MilestonesTextFieldContainerState
   @override
   void initState() {
     super.initState();
-    _textEditingController = TextEditingController();
-    _textEditingController.text = VarContainer.milestonesText;
+    _textEditingController = TextEditingController(text: VarContainer.milestonesText);
   }
 
   @override
@@ -59,7 +60,7 @@ class _MilestonesTextFieldContainerState
       height: MediaQuery.of(context).size.height * 0.4,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(28),
-        color: Color.fromRGBO(16, 43, 51, 1),
+        color: const Color.fromRGBO(16, 43, 51, 1),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -73,7 +74,7 @@ class _MilestonesTextFieldContainerState
             },
             maxLines: null,
             keyboardType: TextInputType.multiline,
-            style: TextStyle(
+            style: const TextStyle(
               color: Color.fromRGBO(226, 235, 237, 1),
               fontFamily: 'Inter',
               fontSize: 16,
@@ -81,7 +82,7 @@ class _MilestonesTextFieldContainerState
               fontWeight: FontWeight.normal,
               height: 1,
             ),
-            decoration: InputDecoration.collapsed(
+            decoration: const InputDecoration.collapsed(
               hintText: 'Set your lifegoals',
               hintStyle: TextStyle(
                 color: Color.fromRGBO(226, 235, 237, 1),
@@ -109,7 +110,7 @@ class MilestonesNotepadTextContainer extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.8,
       height: MediaQuery.of(context).size.height * 0.4,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
