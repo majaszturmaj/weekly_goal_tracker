@@ -61,7 +61,7 @@ What overwhelmed me:
 ## This is the end (Saigon noises)
 Although I couldn't implement all of my additional ideas, I met the requirements set for the project from the very beginning. So we have a notepad that functions as a scratchpad, as well as a second notepad. On the first page, the user can diligently jot down their activities, and by switching to the second page, they can compare them with their long-term goals. Notes are not deleted (because it would be a tragic experience for the user if there was no history saving), and they can only be modified by the user. This allows the notes to serve as summaries for any period the user chooses.
 
-##Ideas for further development
+## Ideas for further development
 If the situation with the text resetting in the MilestonesPage is fixed and functional logic is implemented, the application could be considered complete (fulfilling all dreams). Alternatively, several other improvements, especially related to the appearance, could be added. Here are my suggestions.
 
 **Enhancements**
